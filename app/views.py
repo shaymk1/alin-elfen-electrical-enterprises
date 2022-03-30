@@ -1,22 +1,41 @@
 # from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import *
 
 
 def home(request):
-  context = {}
-  return render(request, 'app/index.html',context )
+    context = {}
+    return render(request, 'app/index.html', context)
 
 
 def about(request):
-  context = {}
-  return render(request, 'app/about.html', context)
+    context = {}
+    return render(request, 'app/about.html', context)
 
 
 def services(request):
-  context = {}
-  return render(request, 'app/services.html', context)
+    services = Services.objects.all()
+    context = {
+        'services': services
+    }
+    return render(request, 'app/services.html', context)
 
 
 def contact(request):
-  context = {}
-  return render(request, 'app/contact.html', context)
+
+    if request.method == 'POST':
+        # If key is in request.POST the key variable will be equal to it, if not, then it will be equal to False.
+        first_name = request.POST.get('first-name', False)
+        last_name = request.POST.get('last-name', False)
+        email = request.POST.get('email', False)
+        message = request.POST.get('message', False)
+        context = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'email': email,
+            'message': message
+        }
+        return render(request, 'app/contact.html', context)
+
+    else:
+        return render(request, 'app/contact.html')

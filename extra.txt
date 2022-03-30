@@ -72,3 +72,65 @@
         </div>
       </div>
     </div> -->
+
+
+
+     {% comment %} <div class="col-md-6 mb-5 mb-lg-5 col-lg-4">
+            <div class="service-2 h-100">
+              <div class="svg">
+                <img src="{% static './assets/images/transformer.svg' %}" alt="Image" class="">
+              </div>
+
+              <h3><span style = "font-size: 15px;" >Transformer Maintenance</span></h3>
+              <p>We also specialize in transformer maintenance , including the transformer oil purification! We have special equipment for that!</p>
+
+            </div>
+          </div>
+          <div class="col-md-6 mb-5 mb-lg-5 col-lg-4">
+            <div class="service-2 h-100">
+              <div class="svg">
+                <img src="{% static './assets/images/ammeter.svg' %}" alt="Image" class="">
+              </div>
+
+              <h3><span style = "font-size: 15px;">Change-Over Switches </span></h3>
+              <p>We do repair as well as the installation of change over switches for generators.</p>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-6 mb-5 mb-lg-5 col-lg-4">
+            <div class="service-2 h-100">
+              <div class="svg">
+                <img src="{% static './assets/images/power.svg' %}" alt="Image" class="">
+              </div>
+
+              <h3><span style = "font-size: 15px;">HT Maintenance</span></h3>
+              <p>All your High Tension Electrical problems including cables!</p>
+
+               
+
+            </div>
+          </div>
+          <div class="col-md-6 mb-5 mb-lg-5 col-lg-4">
+            <div class="service-2 h-100">
+              <div class="svg">
+                <img src="{% static './assets/images/battery.svg' %}" alt="Image" class="">
+              </div>
+
+              <h3><span style = "font-size: 15px;">UPS Backup</span></h3>
+              <p>We do Uninterrupted Power Supply(UPS) units for those load-shedding days, as well as the back up batteries for generators.</p>
+
+            </div>
+          </div>
+          <div class="col-md-6 mb-5 mb-lg-5 col-lg-4">
+            <div class="service-2 h-100">
+              <div class="svg">
+                <img src="{% static './assets/images/cable.svg' %}" alt="Image" class="">
+              </div>
+
+              <h3><span style = "font-size: 15px;">Higher Tension Electrical Cables</span></h3>
+              <p>We do electrical cable fault finding using a Thumper!</p>
+
+            </div>
+          </div>

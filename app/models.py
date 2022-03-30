@@ -10,9 +10,7 @@ class Services(models.Model):
   title = models.CharField(max_length=200)
   description = models.TextField(blank=True)
   svg_file = models.FileField(upload_to="assets/photos",       blank=True,validators = [validate_file_extension])
-  # svg = models.FileField()
-  # image = models.ImageField(upload_to='image_upload_path')
-  # image = models.ImageField('Image', upload_to = 'photos',validators = [validate_file_extension])
+ 
 
   class Meta:
     verbose_name = 'services'
