@@ -34,13 +34,13 @@
                 <form action=" {% url 'home' %} " method="POST" >
                   {% csrf_token %}
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name">
+                    <input type="text" name = "name" class="form-control" placeholder="Name">
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" name = "email" placeholder="Email">
                   </div>
                   <div class="form-group">
-                    <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Message"></textarea>
+                    <textarea name="message" class="form-control" id="" cols="30" rows="5" placeholder="Message"></textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" value="Send Message" class="btn btn-primary px-5"

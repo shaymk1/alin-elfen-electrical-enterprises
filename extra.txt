@@ -134,3 +134,43 @@
 
             </div>
           </div>
+
+
+
+
+           # send_mail(first_name,
+        #           last_name,
+        #           message,
+        #           settings.EMAIL_HOST_USER, ['raisibeditle@gmail.com'], fail_silently=False)
+
+
+
+         # context = {
+        #     'first_name': first_name,
+        #     'last_name': last_name,
+        #     'email': email,
+        #     'message': message
+        # }
+        # send email
+        # send_mail(
+        #     # subject:
+        #     (f"message from {first_name} {last_name}"),
+        #     # message:
+        #     message,
+        #     # (f"how about it hey? {message}"),
+        #     # from which email
+        #     email,
+        #     # to which email
+        #     ['raisibeditle@gmail.com'],
+        #     fail_silently=False,
+        # )
+        # return HttpResponseRedirect(reverse('home'))
+        # , context)
+        
+ # send_mail(
+        #     'message_name',  # subject
+        #     'message_text',  # message
+        #     'message_email',  # from_email
+        #     ['chaitu.orakala@gmail.com'],  # to_email
+
+        # )

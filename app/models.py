@@ -19,12 +19,4 @@ class Services(models.Model):
   def __str__(self):
     return self.title
 
-class BackgroundImage(models.Model):
-  bg_image = models.ImageField(upload_to='photos')
 
-  class Meta:
-    verbose_name = 'BackgroundImage'
-    verbose_name_plural = 'BackgroundImage'
-
-  def __str__(self):
-    return self.bg_image
