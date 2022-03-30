@@ -1,6 +1,7 @@
 # from multiprocessing import context
 from django.shortcuts import render, redirect
 from .models import *
+from django.core.mail import send_mail
 
 
 def home(request):
@@ -35,6 +36,19 @@ def contact(request):
             'email': email,
             'message': message
         }
+        # send email
+        send_mail(
+            # subject:
+            'message from' + '' + first_name, 
+            # message:
+            message,
+            # from which email
+            email,
+            # to which email
+            ['smkekae1@gmail.com'],
+
+
+        )
         return render(request, 'app/contact.html', context)
 
     else:
