@@ -1,5 +1,6 @@
-from multiprocessing import context
-from django.shortcuts import render,HttpResponse
+# from multiprocessing import context
+from django.shortcuts import render
+
 
 def home(request):
   context = {}

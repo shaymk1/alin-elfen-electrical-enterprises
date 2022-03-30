@@ -31,7 +31,7 @@
           <div class="col-md-6">
             <div class="quick-contact-form bg-white">
                 <h2>Get In Touch!</h2>
-                <form action="#" method="" >
+                <form action=" {% url 'home' %} " method="POST" >
                   {% csrf_token %}
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name">
