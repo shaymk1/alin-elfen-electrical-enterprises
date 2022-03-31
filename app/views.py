@@ -2,16 +2,17 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Services
+from .models import *
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.contrib import messages
 # from django.views.generic import TemplateView
 
 
 def home(request):
     if request.method == 'POST':
-        name = request.POST.get('name',False)
+        name = request.POST.get('name', False)
         email = request.POST.get('email', False)
         message = request.POST.get('message', False)
         context = {
@@ -30,14 +31,18 @@ def home(request):
             # to which email
             ['smkekae1@gmail.com'],
         )
+
         return render(request, 'app/index.html', context)
     else:
-        return HttpResponseRedirect(reverse('home'))
-        # return render(request, 'app/index.html')
+        # return HttpResponseRedirect(reverse('home'))
+        return render(request, 'app/index.html')
 
 
 def about(request):
-    context = {}
+    about_us = About.objects.all()
+    context = {
+        'about_us': about_us
+    }
     return render(request, 'app/about.html', context)
 
 
@@ -61,11 +66,9 @@ def contact(request):
 
         # send email
         send_mail(
-
-
             (f"message from {first_name} {last_name}"),
             message,
-            # from sender
+            # from sender which is in settings.py
             email,
             # to which email
             ['smkekae1@gmail.com'],
@@ -78,6 +81,10 @@ def contact(request):
             'email': email,
             'message': message
         }
+
+        # messages.success(
+
+        #     request, 'your message has been submitted successfully, we will get back to you as soon as we can!')
         return render(request, 'app/contact.html', context)
     else:
-        return HttpResponseRedirect(reverse('home'))
+        return render(request, 'app/contact.html')
