@@ -11,33 +11,8 @@ from django.contrib import messages
 
 
 def home(request):
-    if request.method == 'POST':
-        name = request.POST.get('name', False)
-        email = request.POST.get('email', False)
-        message = request.POST.get('message', False)
-        context = {
-            'name': name,
-            'email': email,
-            'message': message
-        }
-        # send email
-        send_mail(
-            # subject:
-            name,
-            # message:
-            message,
-            # from which email
-            email,
-            # to which email
-            ['smkekae1@gmail.com'],
-        )
-
-        return render(request, 'app/index.html', context)
-    else:
-        # return HttpResponseRedirect(reverse('home'))
-        return render(request, 'app/index.html')
-
-
+    return render(request, 'app/index.html')
+    
 def about(request):
     about_us = About.objects.all()
     context = {
@@ -55,7 +30,6 @@ def services(request):
 
 
 def contact(request):
-
     if request.method == 'POST':
         # If key is in request.POST the key variable will be equal to it, if not, then it will be equal to False.
 
@@ -82,9 +56,14 @@ def contact(request):
             'message': message
         }
 
-        # messages.success(
+        
 
-        #     request, 'your message has been submitted successfully, we will get back to you as soon as we can!')
+       
         return render(request, 'app/contact.html', context)
     else:
         return render(request, 'app/contact.html')
+
+     ## messages.success(     request, 'your message has been submitted successfully, we will get back to you as soon as we can!')
+        # return HttpResponseRedirect('/home/')
+        # return HttpResponseRedirect(reverse('home'))
+        

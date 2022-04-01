@@ -31,6 +31,10 @@ INSTALLED_APPS = [
     # 'app',
 ]
 
+# CONTACT_REDIRECT_URL = '/'
+
+# CONTACT_URL = 'contact/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -125,11 +129,7 @@ MEDIA_ROOT = BASE_DIR / 'media-files'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
-
 # email setting
-
-
 
 
 # production

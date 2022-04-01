@@ -9,11 +9,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app.urls')),
-    path('about/', include('app.urls')),
-    path('services/', include('app.urls')),
-    path('contact/', include('app.urls')),
+    path('', include("app.urls")),
+    path('about/', include("app.urls")),
+    path('services/', include("app.urls")),
+    path('contact/', include("app.urls")),
+   
 
-
+  
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    
