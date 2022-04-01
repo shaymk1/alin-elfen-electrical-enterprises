@@ -8,6 +8,9 @@ from django.conf.urls.static import static
 # app_name = "app"
 
 urlpatterns = [
+    
+    #if honeypot is installed:
+    # path('admin/', include("admin_honeypot.urls", namespces = "admin_honeypot")),
     path('admin/', admin.site.urls),
     path('', include("app.urls")),
     path('about/', include("app.urls")),

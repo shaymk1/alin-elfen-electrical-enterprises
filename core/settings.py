@@ -1,6 +1,10 @@
 
 
 from pathlib import Path
+import django_heroku
+import dj_database_url
+import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,12 +14,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_jdj+3b(ozpro1i14*lir$@=x1^t@6sm9elzf1-6i4l@o=b8wq'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+# cast = bool will change True from string to boolean
+DEBUG = config('DEBUG', default=True, cast=bool)
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -28,12 +34,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
-    # 'app',
+    # 'admin_honeypot'
+    
 ]
 
-# CONTACT_REDIRECT_URL = '/'
 
-# CONTACT_URL = 'contact/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -43,7 +48,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #for timeout
+    # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
+
+
+# SESSION_EXPIRE:
+# SESSION_EXPIRE_SECONDS = 3600  # 1 hour
+# SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+# SESSION_TIMEOUT_REDIRECT = 'your_redirect_url_here/'
 
 ROOT_URLCONF = 'core.urls'
 
@@ -116,12 +129,20 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR / 'media'
 
-STATICFILES_DIRS = [
+# for heroku:
 
-    BASE_DIR, 'static'
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+django_heroku.settings(locals())
 
-MEDIA_ROOT = BASE_DIR / 'media-files'
+# for normal use:
+
+# STATICFILES_DIRS = [
+
+#     BASE_DIR, 'static'
+# ]
+
+# MEDIA_ROOT = BASE_DIR / 'media-files'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -129,13 +150,11 @@ MEDIA_ROOT = BASE_DIR / 'media-files'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# email setting
-
-
-# production
+## email setting production
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'raisibeditle@gmail.com'
-EMAIL_HOST_PASSWORD = 'cpadvakwcetaregs'
+
+EMAIL_HOST = config('EMAIL_HOST', default='localhost')
+EMAIL_PORT = config('EMAIL_PORT',  cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS',  cast=bool)
